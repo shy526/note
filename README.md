@@ -39,5 +39,9 @@
 ## RabbitMQ
 - 消息队列
 
+## 全文检索
+- Solr配置
+- Lucene 的使用
+
 
 
