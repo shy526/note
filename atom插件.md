@@ -24,5 +24,5 @@
 - markdon-table-editor
   - 方便表格编写
 
-- markdown-table-editor
+- markdown-img-paste
   - 选中高亮
