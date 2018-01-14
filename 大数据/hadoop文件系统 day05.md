@@ -230,3 +230,92 @@ public void test3(){
     }
 }
 ```
+
+- 创建目录
+
+```java
+@Test
+public void mkdirsTest(){
+    String url= "hdfs://192.168.198.128/sun1";
+    Configuration config=new Configuration();
+    try {
+        //创建需要权限
+        FileSystem fs = FileSystem.get(URI.create(url),config,"root");
+        //与java.io.File 类似的mkdirs
+        boolean mkdirs = fs.mkdirs(new Path(url));
+        if (mkdirs){
+            System.out.println("创建成功");
+        }else{
+            System.err.println("创建失败");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+```
+> 调用create方法时会自动创建父级目录
+
+- 文件元数据
+  - 由FileStatus类封装
+    - 文件长度,块的大小,复本,修改时间,所有者,权限信息
+    - `FileSystem.getFileStatus`获取
+
+```java
+@Test
+public void FileStatusTest(){
+    String url="hdfs://192.168.198.128/";
+    Configuration config=new Configuration();
+    try {
+        FileSystem fs=FileSystem.get(URI.create(url),config,"root");
+        FileStatus fileStatus = fs.getFileStatus(new Path("/sun/xx1.txt"));
+        System.out.println("status = " + fileStatus);
+        System.out.println("所在路径 = " + fileStatus.getPath().toString());
+        System.out.println("是否为目录 = " + fileStatus.isDirectory());
+        System.out.println("文件长度 = " + fileStatus.getLen());
+        System.out.println("修改时间 = " + fileStatus.getModificationTime());
+        System.out.println("备份数 = " + fileStatus.getReplication());
+        System.out.println("块大小 = " + fileStatus.getBlockSize());
+        System.out.println("文件所有者 = " + fileStatus.getOwner());
+        System.out.println("所属分组 = " + fileStatus.getGroup());
+        System.out.println("权限 =" + fileStatus.getPermission().toString());
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+```
+
+> 路径不存在时会抛出FileNotFoundException异常
+>> 调用 FileSystem.exists 检查
+
+- 列出所有文件
+
+- 递归遍历所有文件
+```java
+@Test
+public void listStatusTest(){
+    String url="hdfs://192.168.198.128/";
+    Configuration configuration=new Configuration();
+    try {
+        FileSystem fs= FileSystem.get(URI.create(url),configuration,"root");
+        allFile(fs,new Path("/"));
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+public void allFile(FileSystem fs,Path path) throws IOException {
+    FileStatus[] fileStatuses = fs.listStatus(path);
+    for (FileStatus f:fileStatuses){
+        System.out.println("f.getPath().toString() = " + f.getPath().toString());
+        if (f.isDirectory()){
+            allFile(fs,f.getPath());
+        }
+    }
+}
+```
