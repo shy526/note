@@ -1,5 +1,11 @@
 ## hadoop 伪分布式配置
 
+### 配置主机名
+- `vim  /etc/sysconfig/network`
+  - 修改hostname
+- 执行 `hostname xxx`
+- `vim /etc/hosts`
+  - 增加对应ip
 ### core-site.xml
 - `fs.defaultFS`
   - namenoded的地址
@@ -63,3 +69,4 @@
   - 需要`700`,`644`权限
     - `chmod 700 ~/.ssh`
     - `chmod 644 ~/.ssh/authorized_keys`
+- `ssh-copy-id –i ~/.ssh/id_rsa.pub root@免密登录的主机`

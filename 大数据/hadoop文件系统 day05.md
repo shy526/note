@@ -310,6 +310,7 @@ public void listStatusTest(){
     }
 }
 public void allFile(FileSystem fs,Path path) throws IOException {
+  //path为目录时返回0或多个,为文件时返回为1的FileStatus数组
     FileStatus[] fileStatuses = fs.listStatus(path);
     for (FileStatus f:fileStatuses){
         System.out.println("f.getPath().toString() = " + f.getPath().toString());
@@ -318,4 +319,66 @@ public void allFile(FileSystem fs,Path path) throws IOException {
         }
     }
 }
+```
+
+- PathFilter
+  - 与`java.io.Filefileter`类似
+
+```java
+public void allFile(FileSystem fs,Path path) throws IOException {
+       FileStatus[] fileStatuses = fs.listStatus(path, (path1)->{
+           if (path1.toString().equals("hdfs://192.168.198.128/sun")||path1.getParent().toString().equals("hdfs://192.168.198.128/sun")){
+               return  true;
+           }
+           return false;
+       });
+       for (FileStatus f:fileStatuses){
+           System.out.println("f.getPath().toString() = " + f.getPath().toString());
+           if (f.isDirectory()){
+               allFile(fs,f.getPath());
+           }
+       }
+   }
+```
+> FileUti.stat2Paths(FileStatus[] fs)将FileStatus数组转换为Path数组
+
+- 通配符号
+- `public FileStatus[] globStatus(Path pathPatten)`
+  - 返回 Filestatus对象并安路径排序
+
+| 通配符 |    名称    |                      匹配                       |
+|:------:|:----------:|:-----------------------------------------------:|
+|   *    |    星号    |                 匹配0到多个字符                 |
+|   ?    |    问号    |                  匹配单个字符                   |
+|  [ab]  |   字符类   |            匹配{a,b}集合中的一个字符            |
+| [^ab]  |   非字符   |           匹配非{a,b}集合中的一个字符           |
+| [a-b]  |  字符范围  |  匹配{a-b}范围内的字符包含啊a,b,a必须小于等于b  |
+| [^a-b] | 非字符范围 | 匹配非{a-b}范围内的字符包含啊a,b,a必须小于等于b |
+| {a,b}  |   或选择   |           匹配包含a或b中的一个表达式            |
+|   \c   |  转义字符  |                    匹配字符c                    |
+
+- 删除数据
+
+```java
+@Test
+  public void deleteTest(){
+      String url="hdfs://192.168.198.128/";
+      Configuration configuration=new Configuration();
+      try {
+          FileSystem fs= FileSystem.get(URI.create(url),configuration,"root");
+          //如path 代表的是个文件或者空目录 会忽略recursive的值
+          //如果path代表一个非空目录,recursive的值为false时会抛出io异常
+          //recursive为false时,只有文件和非空目录可以删除
+          boolean delete = fs.delete(new Path(url + "sun1"), true);
+          if (delete){
+              System.out.println("删除成功");
+          }else{
+              System.out.println("删除失败");
+          }
+      } catch (IOException e) {
+          e.printStackTrace();
+      } catch (InterruptedException e) {
+          e.printStackTrace();
+      }
+  }
 ```
