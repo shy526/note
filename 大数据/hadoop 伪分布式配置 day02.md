@@ -27,7 +27,7 @@
   - cp mapred-site.xml.template mapred-site.xml
     - 执行cp命令复制
 - `mapreduce.framework.name`
-  - 指定`mapreduce`运行在yarn上
+  - 指定`mapreduce`运行在`yarn`上
 
 ### yarn-site.xml
 - `yarn.resourcemanager.hostname`
@@ -35,7 +35,8 @@
 - `yarn.nodemanager.aux-services`
   - NodeManager获取数据的方式
   - 值:`mapreduce_shuffle`
-
+### hadoop-env.sh
+- 指定javahome 根目录
 ### slaves
 - 集群中所有datanode的主机名
 
@@ -66,7 +67,18 @@
 ### ssh 免密登陆
 - `ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa`
   - 根据空指令生成ssh密钥
+- `ssh-keygen -t rsa`
+  - 两个执行一个
   - 需要`700`,`644`权限
     - `chmod 700 ~/.ssh`
     - `chmod 644 ~/.ssh/authorized_keys`
 - `ssh-copy-id –i ~/.ssh/id_rsa.pub root@免密登录的主机`
+
+
+
+```xml
+<property>
+   <name>fs.default.name</name>
+   <value>localhost:9000</value>
+ </property
+```
