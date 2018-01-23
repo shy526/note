@@ -9,7 +9,7 @@
 ### core-site.xml
 - `fs.defaultFS`
   - namenoded的地址
-  - `hdefs://localhost/`
+  - `hdfs://localhost/`
 - `hadoop.tmp.dir`
   - hadoop运行时产生临时文件的存放目录
   - 默认地址:/tmp
