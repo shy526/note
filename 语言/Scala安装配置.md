@@ -18,17 +18,20 @@
     - 搜索`Scala` --> 安装并重启Idea
       - 确认`File Encodings`中 的字符集设置为`utf-8`
         - > 否则导致无法运行
-
-- 测试 idea
-  - 创建Scala项目
-    - 选择正确的jkd和ScalaSdk
-  - 创建 入口类
-  ```scala
-  object HelloWorld {
-   def main(args: Array[String]) {
-      println("Hello, world!") // 输出 Hello World
-   }
+        
+-  测试 idea
+    -  创建Scala项目
+        -  选择正确的jkd和ScalaSdk
+        -  创建 入口类
+ 
+```scala
+object HelloWorld {
+ def main(args: Array[String]) {
+    println("Hello, world!") // 输出 Hello World
+ }
 }
-  ```
+```
+
+
   - 运行右键 `Run 入口类名`
     - 查看输出结果是否正常
