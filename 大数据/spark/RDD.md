@@ -63,3 +63,45 @@
 |    Function<T,R>     |      R call(T)      |   接收一个输入值并返回一个输出值,用于`map()``filter()`等操作   |
 |    Function2<T,R>    |    R call(T1,T2)    | 接收连个输入值并返回一个输出值,用于`aggregate()``fold()`等操作 |
 | FlatMapFunction<T,R> | Iterable<R> call(T) |     接收一个输入值并返回人一个输入值,用于`flatmap()`等操作     |
+
+
+## RDD基本
+- 合集操作
+  - `RDD.distinct()`
+    - 转换操作
+    - 生成一个不可重复集
+    - 开销很大
+  - `RDD.union()`
+    - 合并操作
+    - 包含重复集
+  - `RDD.intersection()`
+    - 返回RDD中都有的元素
+    - 不包含重复集
+    - 性能差
+  - `RDD.sbtract()`
+    - 返回只存在ARDD中而不存在BRDD中的元素
+    - 需要混洗 开销较大
+  - `RDD.cartesian()`
+    - 获取一个笛卡尔积
+    - 开销巨大
+
+- 基本转换操作
+
+| 函数名                                   | 目的                                                    | 示例                    | 结果            |
+| ---------------------------------------- | ------------------------------------------------------- | ----------------------- | --------------- |
+| `map()`                                  | 将函数应用于所有元素并将返回值生成一个新的RDD           | rdd.map(x=>x+1)         | {2,3,4,4}       |
+| `flatMap()`                              | 将函数应用于所有元素将返回的迭代器的所有内容生成一个RDD | rdd.flatMap(x=>x.to(3)) | {1,2,3,2,3,3,3} |
+| `filter()`                               | 将符合条件的元素返回生成一个新的RDD                     | rdd.filter(x=>x!=1)     | {2,3,3}         |
+| `distinct()`                             | 去重                                                    | rdd.distinct()          | {1,2,3}         |
+| `sample(withReplacement,fraCtion[seed])` | 对RDD采样,一级是否替换                                  | rdd.sample(false,0,5)   | 不确定的        |
+> RDD为{1,2,3,3},示例为Scala
+
+- 两个RDD的转换
+
+| 函数名           | 目的                      | 示例                    | 结果                 |
+| ---------------- | ------------------------- | ----------------------- | -------------------- |
+| `union()`        | 生成两个RDD中的所有有元素 | rdd.union(other)        | {1,2,3,3,4,5}        |
+| `intersection()` | 生成两个RDD的共存元素     | rdd.intersection(other) | {3}                  |
+| `subtract()`     | 移除一个RDD的元素         | rdd.subtract(other)     | {1,2}                |
+| `cartesian()`    | 生成笛卡尔积              | rdd.cartesian(other)    | {(1,3),(45)....(35)} |
+> rdd为{1,2,3},other为{3,4,5} 示例scala
