@@ -69,10 +69,8 @@
 - [@Secheduled详细](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/support/CronSequenceGenerator.html)
 - [cron时间表达式参考](https://www.cnblogs.com/maybo/p/5189617.html)
 
-<code style="display: none;">
-{
-  type: "spring小记",
-  tag:"java,springboot,spring,调度",
-  title:"@Scheduled的使用"
-}
+<code style="display: none;" >
+
 </code>
+
+<input type="hidden"  value='{type: "spring小记", tag:"java,springboot,spring,调度",title:"@Scheduled的使用"}'/>
