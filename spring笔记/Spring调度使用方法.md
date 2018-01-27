@@ -63,14 +63,31 @@
 | 在26分、29分、33分执行一次            | `0 26,29,33 * * * ?`   |
 | 每天的0点、13点、18点、21点都执行一次 | `0 0 0,13,18,21 * * ?` |
 
+> 以上为串行执行
+
+## 并行
+- 添加一个连接池 即可实现并行
+```java
+@Configuration
+public class ScheduleConfig implements SchedulingConfigurer {
+
+    @Override
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+        taskRegistrar.setScheduler(Executors.newScheduledThreadPool(5));
+    }
+
+}
+```
+
+## 异步
+- 意义不大
+- [参考这篇](https://www.cnblogs.com/slimer/p/6222485.html)
 
 ## 相关连接
 - [spring官方demo](https://github.com/spring-guides/gs-scheduling-tasks)
 - [@Secheduled详细](https://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/scheduling/support/CronSequenceGenerator.html)
 - [cron时间表达式参考](https://www.cnblogs.com/maybo/p/5189617.html)
 
-<code style="display: none;" >
-
-</code>
-
-<input type="hidden"  value='{type: "spring小记", tag:"java,springboot,spring,调度",title:"@Scheduled的使用"}'/>
+```blog
+{type: "spring小记", tag:"java,springboot,spring,调度",title:"@Scheduled的使用"}
+```
