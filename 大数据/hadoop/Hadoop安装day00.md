@@ -27,3 +27,7 @@
   4. `cat output/*`
     - 查看结果
   - 运行目录为hadoop根目录
+
+```blog
+{type: "Hadoop", tag:"大数据,Hadoop,java",title:"Hadoop安装(单机模式)"}
+```

@@ -212,3 +212,7 @@ public class MaxTemperature {
  - combiner无法取代Reduce
  - 一般与reduce处理逻辑相同只要在`调度`中
    - `job.setcombinerClass(Reduce.class)`即可
+
+ ```blog
+ {type: "Hadoop", tag:"大数据,Hadoop,java",title:"MapReduce概念和例子"}
+ ```

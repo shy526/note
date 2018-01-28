@@ -1,12 +1,15 @@
 ## hadoop 伪分布式配置
 
 ### 配置主机名
+
 - `vim  /etc/sysconfig/network`
   - 修改hostname
 - 执行 `hostname xxx`
 - `vim /etc/hosts`
   - 增加对应ip
+
 ### core-site.xml
+
 - `fs.defaultFS`
   - namenoded的地址
   - `hdfs://localhost/`
@@ -15,6 +18,7 @@
   - 默认地址:/tmp
 
 ### hdfs-site.xml
+
 - `dfs.replication`
   - hdfs保存数据副本的数量
     - 默认:`3`
@@ -23,6 +27,7 @@
   - `false`表示任何
 
 ###  mapred-site.xml
+
 - 没有初始文件
   - cp mapred-site.xml.template mapred-site.xml
     - 执行cp命令复制
@@ -30,17 +35,22 @@
   - 指定`mapreduce`运行在`yarn`上
 
 ### yarn-site.xml
+
 - `yarn.resourcemanager.hostname`
   - resoucemanager的主机名
 - `yarn.nodemanager.aux-services`
   - NodeManager获取数据的方式
   - 值:`mapreduce_shuffle`
 ### hadoop-env.sh
+
 - 指定javahome 根目录
+
 ### slaves
+
 - 集群中所有datanode的主机名
 
 ### 启动
+
 - `hdfs namenode -format`
   - 格式化文件系统
 - hadoopx.x.x/sbin目录下
@@ -56,6 +66,7 @@
     8943 Jps
 
 ### web管理
+
 - `ip:50070`
   - namenode
 - `ip:8088`
@@ -65,6 +76,7 @@
 
 
 ### ssh 免密登陆
+
 - `ssh-keygen -t dsa -P '' -f ~/.ssh/id_dsa`
   - 根据空指令生成ssh密钥
 - `ssh-keygen -t rsa`
@@ -74,11 +86,16 @@
     - `chmod 644 ~/.ssh/authorized_keys`
 - `ssh-copy-id –i ~/.ssh/id_rsa.pub root@免密登录的主机`
 
-
+- 例
 
 ```xml
 <property>
    <name>fs.default.name</name>
    <value>localhost:9000</value>
  </property
+```
+
+
+```blog
+{type: "Hadoop", tag:"大数据,Hadoop,java",title:"Hadoop伪分布式配置"}
 ```

@@ -25,7 +25,7 @@
         - 显示版本
 - 如上表示安装成功
 
-## ivy 
+## ivy
 - 将ivy中的ivy-x.x.x.jar放入`%ANT_HOME%\lib`中
 
 ## idea中配置ivy
@@ -37,7 +37,12 @@
      ![](https://i.imgur.com/TUUBFFl.png)
     - 设置ivy.xml
      ![](https://i.imgur.com/RJwzTkI.png)
-    - `IVY_HOME/src/example/hello-ivy` 
+    - `IVY_HOME/src/example/hello-ivy`
         - 在该目录下运行ant
 
 - 重新编译项目
+
+
+```blog
+{type: "项目管理", tag:"ivy",title:"Idea中配置ivy"}
+```

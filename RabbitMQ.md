@@ -17,7 +17,7 @@
 - erlang
 - 安装RabbitMQ
     - 安装目录`/usr/share/doc/rabbitmq-server-3.6.1`
-    - rabbitmq.config.example文件复制并重命名为 rabbitmq.config 
+    - rabbitmq.config.example文件复制并重命名为 rabbitmq.config
         - `cp /usr/share/doc/rabbitmq-server-3.6.1/rabbitmq.config.example /etc/rabbitmq/rabbitmq.config`
 - 编辑`/etc/rabbitmq/rabbitmq.config`
     - 打开远程访问权限
@@ -87,7 +87,7 @@
 ```java
 public class SimpleDemo {
 	private Connection connection;
-	
+
 	@Before
 	public void initConnection() throws IOException {
 		ConnectionFactory factory=new ConnectionFactory();
@@ -97,14 +97,14 @@ public class SimpleDemo {
 		factory.setPassword("123456");
 		factory.setVirtualHost("/test");
 		connection=factory.newConnection();
-	
+
 	}
 	@Test
 	public void simple_producer() throws IOException {
 
 		//获取Channel通道，作用是通过Channel声明队列，交换机，发布信息
 		Channel channel=connection.createChannel();
-		
+
 		String QUEUE_NAME="Q1";
 		//①参：队列名
 		//②参：durable 消息是否需要持久化，false表示不需要。
@@ -112,7 +112,7 @@ public class SimpleDemo {
 		//④参：true表示：如果此队列没有消费者，队列被自动移除
 		//⑤参：额外的扩展参数，一般为null即可
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-		
+
 		String message="hello";
 		//basicPublish()是用于向队列里生成消息的
 		//①参：交换机的名字
@@ -124,15 +124,15 @@ public class SimpleDemo {
 		connection.close();*/
 		while(true);
 	}
-	
+
 	@Test
 	public void simple_consumer() throws IOException {
 		Channel channel=connection.createChannel();
-		
+
 		String QUEUE_NAME="Q1";
-		
+
 		channel.queueDeclare(QUEUE_NAME, false, false, false, null);
-		
+
 		Consumer consumer=new DefaultConsumer(channel) {
 			//消费者消费消息时，会进入到此方法
 			//数据会传到 byte[] body 这个对象里
@@ -445,12 +445,12 @@ public class TopicDemo {
 			channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
 		}
 	}
-	
+
 	@Test
 	public void topic_consumer_2() throws Exception {
         //同1,修改队列 修改匹配符号为xx.*
 	}
-	
+
 	@Test
 	public void topic_consumer_3() throws Exception {
 	   //同1,修改队列 修改匹配符号为xx.x.xa
@@ -478,7 +478,7 @@ public class TopicDemo {
 
 3. 冗余
     - 持数据的持久化
-    
+
 
 4. 峰值处理能力
      - 关键组件顶住增长的访问压力，而不是因为超出负荷的请求而完全崩溃
@@ -488,3 +488,7 @@ public class TopicDemo {
 
 6. 排序保证
     - 消息队列本来就是排序的，FIFO（先进先出）
+
+```blog
+{type: "RabbitMQ", tag:"RabbitMQ",title:"RabbitMQ的配置与介绍"}
+```

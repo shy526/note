@@ -105,3 +105,50 @@
 | `subtract()`     | 移除一个RDD的元素         | rdd.subtract(other)     | {1,2}                |
 | `cartesian()`    | 生成笛卡尔积              | rdd.cartesian(other)    | {(1,3),(45)....(35)} |
 > rdd为{1,2,3},other为{3,4,5} 示例scala
+
+- 行动操作
+
+|                  函数名                  |                目的                |                                  示例                                  |        结果         |
+|:----------------------------------------:|:----------------------------------:|:----------------------------------------------------------------------:|:-------------------:|
+|               `collect()`                |        返回RDD中的所有元素         |                             rdd.collect()                              |      {1,2,3,3}      |
+|                `count()`                 |          RDD中的元素个数           |                              rdd.count()                               |          4          |
+|             `countByValue()`             |         各个元素出现的次数         |                           rdd.countByValue()                           | {(1,1),(2,1),(3,2)} |
+|               `take(num)`                |        从RDD中返回num个元素        |                              rdd.take(2)                               |        {1,2}        |
+|                `top(num)`                |    从RDD中返回最前面的num个元素    |                               rdd.top(2)                               |        {33}         |
+|       `takeOrdere(num)(ordering)`        | 从RDD中按顺序返回最前面的num个元素 |                      rdd.takeOrdere(2)(myOrdring)                      |        {33}         |
+| `takeSample(withReplacement,num,[seed])` |      从RDD中返回任意num个元素      |                           rdd.takeSample(2)                            |       不确定        |
+|              `reduce(func)`              |      并行整合RDD中的所有元素       |                         rdd.reduce((x,y)=>x+y)                         |          9          |
+|            `fold(zero)(func)`            |     和reduce相同,但需要初始值      |                        rdd.fold(0)((x,y)=>x+y)                         |          9          |
+|          `aggregate(zeroValue)`          |     和reduce相似,返回类型不同      | rdd.aggregate(0,0)((x,y)=>(x.1_1+y,x._2+1),(x,y)=>x._1+y._1,x._2+y._2) |          9          |
+|             `foreache(func)`             |      对rdd中的每一个元素使用       |                           rdd.foreach(func)                            |                     |
+> rdd为{1,2,3,3} 示例scala
+
+- RDD类型的转换
+  - `JavaDoubleRDD`,`JavaPairDD`
+    - 这两个类专门处理特殊类型的RDD
+  - 专门类型的函数接口如下表
+
+|            函数名            |              等价函数               |                用途                |
+|:----------------------------:|:-----------------------------------:|:----------------------------------:|
+|  `DoubleFlatMapFunction<T>`  |   `Function<T,Interable<Double>>`   | 用于flatMapToDouble,生成DoubleRDD  |
+|     `DoubleFunction<T>`      |        `Function<T,Double>`         |   用于MapToDouble,生成DoubleRDD    |
+| `PairFlatMapFunction<T,K,V>` | `Function(T,Iterable<Tuple2<k,V>>)` | 用于flatMaoToPair,生成PairRDD<K,V> |
+|    `PairFunction<T,K,V>`     |      `Function<T,Tuple2<K,V>>`      |   用于mapToPair,生成PairRDD<k,V>   |
+
+- 持久化(缓存)
+  - Spark RDD 是惰性求值的
+  - 持久话别
+
+|        级别         | 使用的空间 | cpu  | 内存 | 磁盘 |
+|:-------------------:|:----------:|:----:|:----:|:----:|
+|     MEMORY_ONLY     |     高     |  低  |  是  |  否  |
+|   MEMORY_ONLY_SER   |     低     |  高  |  是  |  否  |
+|   MEMORY_AND_DISK   |     高     | 中等 | 部分 | 部分 |
+| MEMORY_AND_DISK_SER |     低     |  高  | 部分 | 部分 |
+|      DISK_ONLY      |     低     |  高  |  否  |  是  |
+> 如果数据在内存中放不下会溢出到磁盘上,在内存中存放序列化后的数据
+> 在级别后加上`_2`来把持久数据存为两份
+
+```blog
+{type: "Spark学习", tag:"大数据,spark,RDD",title:"RDD编程"}
+```

@@ -19,3 +19,7 @@
    - `grep` 过滤不必要输出信息
    - 输出结果
      - Pi is roughly 3.1390156950784753
+
+```blog
+{type: "Spark", tag:"大数据,Spark,java",title:"Spark安装"}
+```

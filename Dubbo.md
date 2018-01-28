@@ -63,7 +63,7 @@
 - 升级ZooKeeper客户端
     - 将dubbo中的zookeeper客户端升级到最新的版本
     - 以修正老版本中包含的bug
-    - 
+    -
 ### 支持REST风格远程调用（HTTP + JSON/XML)
 - dubbo支持多种远程调用方式，但缺乏对当今特别流行的REST风格远程调用的支持。
 
@@ -78,16 +78,16 @@
 
 > 目前dubbo以整合dubbox
 ## 控制页面配置
-1.  官网下载 Dubbo 
+1.  官网下载 Dubbo
     -  解压,在Dubbo-admin目录下打开cmd
         - mvn package -Dmaven.skip.test=true
 
 2. 根据实际实际情况修改tomcat的服务端口
-  
+
 3.  修改doubbo.properties配置文件
     - 配置zk的地址(提前配置Zookeeper)
     - 如下
-    
+
     ```properties
     dubbo.registry.address=zookeeper://192.168.234.21:2181?
                 backup=192.168.234.22:2181,192.168.234.23:2181
@@ -124,13 +124,13 @@
 		<artifactId>spring-context</artifactId>
 		<version>4.2.0.RELEASE</version>
 	</dependency>
-	
+
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-beans</artifactId>
 		<version>4.2.0.RELEASE</version>
 	</dependency>
-	
+
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
@@ -376,22 +376,22 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo
 	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
-	
-							
+
+
 	<!-- 提供方应用信息，用于计算依赖关系 -->
 	<dubbo:application name="addService" />
-	
+
 	<!--  使用multicast广播注册中心暴露服务地址 -->
 <!-- 	<dubbo:registry address="multicast://224.5.6.7:1234"/>	 -->
 	<dubbo:registry address="zookeeper://192.168.119.141:2181?backup=192.168.119.139:2181,192.168.119.140:2181" />
-	
-	<!-- 用dubbo协议在20880端口暴露服务 -->  
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
 	<dubbo:protocol name="dubbo" port="20880" />
-	
+
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.demo.dubbo.protocol.AddService" ref="AddService" />
 
@@ -403,9 +403,9 @@
 4. 添加服务类
 
 ```java
-public class Start {	
+public class Start {
 	public static void main(String[] args) throws Exception {
-	
+
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				new String[] { "applicationProvider.xml" });
 				context.start();
@@ -430,25 +430,25 @@ public class Start {
 
 2. 引入dubbo配置文件
     - `resource`下
-   
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans 
-			http://www.springframework.org/schema/beans/spring-beans.xsd 
-			http://code.alibabatech.com/schema/dubbo 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://code.alibabatech.com/schema/dubbo
 			http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
-			
+
 	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
 	<dubbo:application name="consumer-of-addService" />
-	
-	<!-- 注册中心暴露服务地址 --> 
+
+	<!-- 注册中心暴露服务地址 -->
 <!-- 	<dubbo:registry address="multicast://224.5.6.7:1234"/> -->
 	<dubbo:registry address="zookeeper://192.168.119.141:2181?backup=192.168.119.139:2181,192.168.119.140:2181" />
 <dubbo:consumer timeout="5000"/>
-	
+
 	<!-- 生成远程服务代理，可以像使用本地bean一样使用demoService -->
 	<dubbo:reference id="AddService" interface="com.demo.dubbo.protocol.AddService" />
 </beans>
@@ -468,7 +468,7 @@ public class ConSumerThr {
 		for (;;) {
 		System.out.println("客户端收到结果:"+proxy.add(1, 3));
 		Thread.sleep(500);
-		
+
 		}
 	}
 
@@ -498,3 +498,8 @@ public class ConSumerThr {
     - 是Hadoop和Hbase的重要组件
 
 ![](https://i.imgur.com/US6Gaig.png)
+
+
+```blog
+{type: "Dubbo", tag:"Dubbo,Dubbox",title:"Dubbo配置与使用"}
+```

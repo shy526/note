@@ -41,3 +41,7 @@
   -  `webhdfs`来复制
 
 > 虚拟机跑巨慢 多给点资源 限制map数量 否则超级慢
+
+```blog
+{type: "Hadoop", tag:"大数据,Hadoop,java",title:"输入输出剖析"}
+```

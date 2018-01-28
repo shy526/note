@@ -131,3 +131,8 @@
   - 策略选择
     1. NFS过滤器
     2. 群体日志管理(QJM)
+
+
+```blog
+{type: "Hadoop", tag:"大数据,Hadoop,java",title:"hdfs概念"}
+```

@@ -23,3 +23,7 @@
 - [csdn](https://www.cnblogs.com/MrFee/p/4683953.html)
 - [官网](http://hadoop.apache.org/docs/r2.9.0/hadoop-project-dist/hadoop-common/FileSystemShell.html
 )
+
+```blog
+{type: "Hadoop", tag:"大数据,Hadoop,java",title:"命令行接口"}
+```

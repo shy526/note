@@ -382,3 +382,7 @@ public void allFile(FileSystem fs,Path path) throws IOException {
       }
   }
 ```
+
+```blog
+{type: "Hadoop", tag:"大数据,Hadoop,java",title:"Hadoop文件系统"}
+```

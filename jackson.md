@@ -2,7 +2,7 @@
 - Jackson可以轻松的将Java对象转换成json对象和xml文档，同样也可以将json、xml转换成Java对象
 - Jackson所依赖的jar包较少，简单易用并且性能也要相对高些
 
-## 特点 
+## 特点
 - 简单易用
 - 无需创建映射
 - 性能高
@@ -10,23 +10,23 @@
 - 开源
 
 ## 三种处理 JSON方式
-1. 流式API 
-    - 读取并将JSON内容写入作为离散事件      
+1. 流式API
+    - 读取并将JSON内容写入作为离散事件
 。JsonParser读取数据，而JsonGenerator写入数据。它是三者中最有效的方法，是最低的开销和最快的读/写操作。它类似于Stax解析器XML。
 
-2. 树模型 
+2. 树模型
     - 准备JSON文件在内存里以树形式表示
     - `ObjectMapper`构建`JsonNode`节点树
     - 这是最灵活的方法。它类似于XML的DOM解析器。
 
-3. 数据绑定 
+3. 数据绑定
     - 转换JSON并从POJO（普通Java对象）使用属性访问或使用注释
     - 它有两个类型
 
-    - 简单的数据绑定 
+    - 简单的数据绑定
         - 转换JSON和Java Maps, Lists, Strings, Numbers, Booleans 和null 对象。
 
-    - 全部数据绑定 
+    - 全部数据绑定
         -  转换为JSON从任何JAVA类型。
 
 ## ObjectMapper
@@ -52,18 +52,18 @@
         - `public void writeValue(File resultFile, Object value)`
             - 序列化到莫个文件中
     - 转换为对象
-        - `public <T> T readValue(JsonParser jp, Class<T> valueType)` 
+        - `public <T> T readValue(JsonParser jp, Class<T> valueType)`
             - 具有多个重载方法
 
 
-###  树模型 
+###  树模型
 - 树模型准备JSON文件的内存树表示
 
 - API
     -  `public JsonNode readTree(String content)`
         -  将JSON串转换为一个根节点
     - 便利JsonNode
-        - `JsonNode.path(xxx)` 
+        - `JsonNode.path(xxx)`
             - 选择莫个节点
         - `JsonNode.getTextValue()`
             - 获取单个值
@@ -89,7 +89,7 @@
         - `JsonToken.END_OBJECT`
             - 结束标记
 -   `getCurrentName()`
-    -  获取key 
+    -  获取key
 
 - `nextToken()`
     - `JsonToken.END_ARRAY`
@@ -112,4 +112,8 @@
 objectMapper.readValue(objectMapper.readTree(JSON串).traverse(),objectMapper.
 						getTypeFactory().
                     constructCollectionType(List.class, 范型.class));
+```
+
+```blog
+{type: "json", tag:"序列化,json,java",title:"jackson的使用"}
 ```

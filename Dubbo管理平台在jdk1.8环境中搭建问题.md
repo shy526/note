@@ -4,12 +4,12 @@
 
 ```
 Error creating bean with name 'uriBrokerService':
-Cannot create inner bean '(inner bean)' of type [com.alibaba.citrus.service.uribroker.impl.URIBrokerServiceImpl$URIBrokerInfo] while setting bean property 'brokers' with key [0]; 
+Cannot create inner bean '(inner bean)' of type [com.alibaba.citrus.service.uribroker.impl.URIBrokerServiceImpl$URIBrokerInfo] while setting bean property 'brokers' with key [0];
 nested exception is org.springframework.beans.factory.BeanCreationException:
- Error creating bean with name '(inner bean)#25': Cannot create inner bean 'server' of type [com.alibaba.citrus.service.uribroker.uri.GenericURIBroker] while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException: 
+ Error creating bean with name '(inner bean)#25': Cannot create inner bean 'server' of type [com.alibaba.citrus.service.uribroker.uri.GenericURIBroker] while setting constructor argument; nested exception is org.springframework.beans.factory.BeanCreationException:
     Error creating bean with name 'server':
  Error setting property values; nested exception is org.springframework.beans.NotWritablePropertyException:
- Invalid property 'URIType' of bean class[com.alibaba.citrus.service.uribroker.uri.GenericURIBroker]: 
+ Invalid property 'URIType' of bean class[com.alibaba.citrus.service.uribroker.uri.GenericURIBroker]:
 Bean property 'URIType' is not writable or has an invalid setter method. Does the parameter type of the setter match the return type of the getter?
 ```
 
@@ -26,3 +26,7 @@ Bean property 'URIType' is not writable or has an invalid setter method. Does th
 
 3. 修改项目依赖重新打包
     - http://blog.csdn.net/blue_dd/article/details/51298438
+
+```blog
+{type: "bug", tag:"Dubbo,java,",title:"Dubbo在jdk1.8环境中搭建问题"}
+```

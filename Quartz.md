@@ -33,7 +33,7 @@
 		<property name="jobDetail" ref="paymentOrderJobDetail" />
 		<!-- 每一分钟执行一次 -->
 		<property name="cronExpression" value="0 0/1 * * * ?" />
-	</bean>	
+	</bean>
 	<!-- 定义调度器 -->
 	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 	    <property name="triggers">
@@ -57,8 +57,8 @@ public class PaymentOrderJob extends QuartzJobBean {
 		//算出两天前的日期,下面代码的意思是以当前时间为基准，算出两天前的日期
 		Date date=new DateTime().minusDays(2).toDate();
 		applicationContext.getBean(OrderMapper.class).updateOrderStatus(date);
-		
-		
+
+
 	}
 
 }
@@ -67,3 +67,7 @@ public class PaymentOrderJob extends QuartzJobBean {
 ## 相关连接
 官网:http://www.quartz-scheduler.org/
 官网:https://github.com/quartz-scheduler/quartz
+
+```blog
+{type: "Quartz", tag:"定时任务",title:"Quartz的简单使用"}
+```

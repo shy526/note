@@ -22,7 +22,7 @@
     - hive表
     - Parque
     - json
-  - 使用sql堆RDD进行数据分析
+  - 使用sql对RDD进行数据分析
   - Spark 1.0 引入
 
 - Spark Streaming
@@ -68,3 +68,7 @@
 
 #### java 中使用spark
 - 导入jar
+
+```blog
+{type: "Spark", tag:"大数据,Spark,java",title:"Spark概念"}
+```

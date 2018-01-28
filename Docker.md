@@ -92,7 +92,7 @@
 
 - `docker save [选项] 镜像名[:版本号]`
     - 输出镜像文件为.tar文件
-    - -o 
+    - -o
         - 输出到的文件
 
 - `docker load -i .tar文件地址`
@@ -104,13 +104,13 @@
         - 应用docker指令创建镜像
     - -m
         - 提交时的说明文字
-    
+
 ## 容器操作(常用指令)
 - `docker ps [选项]`
     - 显示容器
-    - -a 
+    - -a
         - 显示所有的容器，包括未运行的
-    - -f 
+    - -f
         - 根据条件过滤显示的内容
     - --format
         - 定返回值的模板文件
@@ -163,11 +163,11 @@
 
 - `docker exec [选项] CONTAINER COMMAND [ARG...]`
     - 进入运行容器中
-    - -d 
+    - -d
         - 分离模式: 在后台运行
-    - -i 
+    - -i
         - 即使没有附加也保持STDIN 打开
-    - -t 
+    - -t
         - 分配一个伪终端
     - `docker exec -it 容器id bash`
         - 进入运行容器
@@ -183,13 +183,13 @@
 - 网易蜂巢：https://c.163.com/
 
 
-## Dockerfile 
+## Dockerfile
 
 - Docker镜像通常是通过Dockerfile来创建的
 - Dockerfile提供了镜像内容的定制
 - 体现了层级关系的建立
 
-### 常用编辑指令 
+### 常用编辑指令
 
 |指令|说明|
 |:----:|:----:|
@@ -228,4 +228,7 @@ ENV PATH=$PATH:$CATALINA_HOME/bin
 #把tomcat的8080端口暴露出去
 EXPOSE 8080
 CMD ["/usr/local/src/apache-tomcat-7.0.55/bin/catalina.sh","run"]
+```
+```blog
+{type: "Docker", tag:"Docker",title:"Docker的简单使用"}
 ```
