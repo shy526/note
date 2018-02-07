@@ -94,14 +94,138 @@ def main(args: Array[String]) {
 - Byte->Short->Int->Long->Long->Float->Double
 - Char->Int
 > 不可逆
+
 ## 类
 
+- 类名驼峰命名法首字母大写
+- 默认提供一个构造函数不带参数
+- 构造函数可以提供默认值
+  - 例
+```scala
+class User2(var name:String="tom" ,var age:Int=18){
+  def  js()={
+    println(name+":"+age)
+  }
+}
+new User2().js();
+new User2("k").js()
+new User2(age=40).js()
+```
+- get/set
 
+```scala
+class User{
+   private var _name:String="tom"
+   private var _age:Int=17;
 
+   //get
+   def name=_name;
+   def age=_age;
+   //set
+   def name_=(newValue:String)=_name=newValue;
+   def age_=(newValue:Int)=_age=newValue;
 
+   override def toString = s"User3($name, $age)"
+ }
+```
 
+## trait特性
+- 泛型抽象方法
+  - 例
+```Scala
+//定义泛型特性
+trait Iterator[A]{
+   def hasNext:Boolean;
+   def next():A
+ }
+ //继承特性
+ class IntIterator(to:Int) extends Iterator[Int]{
+   private var current=0
+   //重写抽象方法
+   override def hasNext = current<to
+
+   override def next() = {
+     if (hasNext){
+       val t=current;
+       current+=1;
+       t
+     }else 0
+   }
+ }
+ var xx=new IntIterator(3);
+ println(xx.next())
+ println(xx.next())
+ println(xx.next())
+ println(xx.next())
+```
+- 混入
+```Scala
+//定义一个抽象类
+abstract  class A{
+  val message:String;
+}
+
+//定义类B继承A
+class  B extends A{
+  val message="我是类b"
+}
+
+//定义一个特性C 继承 A
+trait C extends A{
+  def loudMessage=message.toUpperCase();
+}
+
+//定义类D继承B 支持特性 c
+class D extends B with C
+val d=new D;
+println(d.message);
+println(d.loudMessage)
+  // with 关键词不能单个使用 extends 则可以为类或特性
+//class E with B;
+class BB;
+class BBB;
+  // extends 不支持多继承 只能拥有一个父类
+ //class E extends BB extends BBB
+//class E extends BB,BBB
+trait CC;
+trait CCC;
+// 特性可以继承,同时也可以混入其他特性
+trait  CCCC extends CCC with CC
+// with 支持多个 混入
+class E extends BB with CC with CCC ;
+
+```
+
+- 实例Scala设计 一个迭代器实例 
+
+```Scala
+//提供迭代器实现方法
+class StringIterator(s:String) extends AbsIterator{
+  override type T = Char
+  private var i=0;
+  override def hasNext = i<s.length
+  override def next() = {
+    val ch=s charAt i
+    i+=1;
+    ch
+  }
+}
+
+//提供一个遍历的字符串的特质
+trait  RichIterator extends AbsIterator{
+  def foreach(f:T=>Unit):Unit={
+    while (hasNext) f(next())
+  }
+}
+  //混入
+  class RichStringIter extends StringIterator("Scala") with RichIterator;
+ val richStringIter=new RichStringIter;
+ richStringIter foreach println
+```
+> 感叹一下Scala神奇的语法
 
 
 ```blog
 {type: "编程语言", tag:"编程语言,Scala",title:"Scala基础"}
 ```
+
