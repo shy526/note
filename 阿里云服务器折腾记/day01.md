@@ -76,7 +76,44 @@
       4. `FLUSH PRIVILEGES `
         - 启用
 
+### git安装
+- https://github.com/git/git/archive/v2.16.1.tar.gz 下载解压
+  - `wget https://github.com/git/git/archive/v2.16.1.tar.gz`
+  - `tar -xvf xxx.gz`
+- 安装依赖
+  - `yum -y install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc perl-ExtUtils-MakeMaker`
 
+- 编译安装
+  - `make prefix=/usr/local/git all`
+    - 编译
+  - `make prefix=/usr/local/git install`
+    - 安装
+- 检查版本
+  - `git --version`
+    - 版本不正常,修改版本
+    - `vim /etc/profile`
+      - 添加如下
+        - `export PATH=/usr/local/git/bin:$PATH`
+      - `source /etc/profile`
+        - 生效
+
+- 部分使用
+  - `git clone https://github.com/sunjiaqing/blog.git`
+    - 克github隆远程仓库
+
+- maven 安装
+-  https://archive.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz 下载解压
+
+- 修改profile
+  ```
+  export MAVEN_HOME=/home/work/maven/apache-maven-3.5.0
+    export PATH=$PATH:$MAVEN_HOME/bin
+  ```
+  - `source /etc/profile`
+
+- 测试
+  - `mvn -version`
+  - 修改本地仓库地址
 
 
 
