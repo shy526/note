@@ -101,6 +101,7 @@
   - 不配置的情况存放在以用户名命名的队列中
   - 支持层次队列
   - [官方文档](http://hadoop.apache.org/docs/r2.9.0/hadoop-yarn/hadoop-yarn-site/FairScheduler.html)
+<<<<<<< HEAD
   > 默认队列和动态创建的队列默认权重为1
 - 调度策略
   - `defaultQueueSchedulingPolicy`
@@ -168,5 +169,9 @@
       - `defaultQueyeSchedulingPolicy`设置为`drf`
         - 在分配文件的顶级元素中
 
+=======
+
+- 队列放置
+>>>>>>> acdab3a615994b1583fc2aa5e76d1f97797784ed
 
 - {type: "Hadoop", tag:"大数据,Hadoop,YARN",title:"YARN与调度器"}
