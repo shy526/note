@@ -118,7 +118,8 @@ int main() {
   - `register`
     - 将变量定义在存储在寄存器中(尽可能),不能进行&运算
 
-- `static`的例子
+  - `static`的例子
+  
 ```c
 #include <stdio.h>
  void  addCount(){
@@ -140,7 +141,6 @@ int main() {
 }
 ```
 > static 修饰方法时 只能在本文件调用
-
 ## 结构体
 - 类的雏形
   - 用于表示一组数据
