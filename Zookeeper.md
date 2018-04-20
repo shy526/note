@@ -132,11 +132,11 @@ initLimit: zookeeper集群中的包含多台server, 其中一台为leader, 集�
         - 是否只读
 
 ### 权限设置
-- addauth digest username:password`
+- `addauth digest username:password`
    - 添加一个用户
    - 密码需要特别处理
    - Base64(SHA1(password))
-   > 指令不需要 但是设置权限的时候需要
+   >   指令不需要 但是设置权限的时候需要
 
 ```java
     /**
