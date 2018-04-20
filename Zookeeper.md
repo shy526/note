@@ -131,6 +131,30 @@ initLimit: zookeeper集群中的包含多台server, 其中一台为leader, 集�
     - canBeReadOnly
         - 是否只读
 
+### 权限设置
+- addauth digest username:password`
+   - 添加一个用户
+   - 密码需要特别处理
+   - Base64(SHA1(password))
+   > 指令不需要 但是设置权限的时候需要
+
+```java
+    /**
+     *  添加一个用户
+     * @param zooKeeper 客户端
+     * @param idPassword 用户名:密码
+     * @return zooKeeper客户端
+     * @throws NoSuchAlgorithmException
+     */
+    public  ZooKeeper generateDigest(ZooKeeper zooKeeper,String idPassword) throws NoSuchAlgorithmException {
+         String parts[] = idPassword.split(":", 2);
+         byte digest[] = MessageDigest.getInstance("SHA1").digest(idPassword.getBytes());
+        zooKeeper.addAuthInfo("digest",parts[0].concat(":").concat(base64Encode(digest)).getBytes());
+        return zooKeeper;
+    }
+```
+> "auth"方式,必须保证有一个用户被添加 否则抛出异常
+
 ```blog
 {type: "Zookeeper", tag:"大数据,zookeeper,RDD",title:"Zookeepe1er的配置与简单使用"}
 ```
