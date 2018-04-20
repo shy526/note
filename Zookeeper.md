@@ -115,6 +115,21 @@ initLimit: zookeeper集群中的包含多台server, 其中一台为leader, 集�
 - 顺序临时节点
     - `create -s -e /zk02 12354`
 
+## API 
+-  `ZooKeeper(String connectString, int sessionTimeout, Watcher watcher,long sessionId, byte[] sessionPasswd, boolean canBeReadOnly)`
+    - connecString *
+        - ip:port格式的字符串,多个使用,号相隔
+    - sessionTimeout 
+        - 超时时间
+        - 影响心跳间隔
+    - watcher *
+        - 监听器 
+    - sessionId
+        - id
+    - sessionPasswd
+        - 密码   
+    - canBeReadOnly
+        - 是否只读
 
 ```blog
 {type: "Zookeeper", tag:"大数据,zookeeper,RDD",title:"Zookeepe1er的配置与简单使用"}
