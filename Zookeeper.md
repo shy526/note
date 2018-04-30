@@ -1,4 +1,4 @@
-## 概述
+# zookeeper 概述
 - 分布式服务框架，主要是用来解决分布式应用中常见的问题
     - 集群中数据的 一致性、统一命名服务、集群中机器节点的状态同步服务、集群管理、分布式应用配置项的管 理等
 
@@ -35,7 +35,7 @@ server.2=192.168.234.11:2888:3888
 server.3=192.168.234.12:2888:3888
 ```
 
-### 配置文件说明
+## 配置文件说明
 ```cnf
 tickTime: zookeeper中使用的基本时间单位, 毫秒值.
 dataDir: 数据目录. 可以是任意目录.
@@ -45,10 +45,7 @@ initLimit: zookeeper集群中的包含多台server, 其中一台为leader, 集�
  syncLimit: 该参数配置leader和follower之间发送消息, 请求和应答的最大时间长度. 此时该 参数设置为2, 说明时间限制为2倍tickTime, 即4000ms.
 ```
 
-## 指令
-- 一些常用指令
-
-### 服务指令
+## 服务指令
 
 1. 启动ZK服务
     - `sh bin/zkServer.sh start`
@@ -61,7 +58,7 @@ initLimit: zookeeper集群中的包含多台server, 其中一台为leader, 集�
 5. 连接zk客户端
     - `sh zkCli.sh -server 127.0.0.1:2181`
 
-### 客户端指令
+## 客户端指令
 
 1. 显示根目录下、文件
     - `ls /`
@@ -115,43 +112,43 @@ initLimit: zookeeper集群中的包含多台server, 其中一台为leader, 集�
 - 顺序临时节点
     - `create -s -e /zk02 12354`
 
-## API 
+## API
 -  `ZooKeeper(String connectString, int sessionTimeout, Watcher watcher,long sessionId, byte[] sessionPasswd, boolean canBeReadOnly)`
-    - connecString *
-        - ip:port格式的字符串,多个使用,号相隔
-    - sessionTimeout 
-        - 超时时间
-        - 影响心跳间隔
+   - connecString *
+     -  ip:port格式的字符串,多个使用,号相隔
+   - sessionTimeout
+     - 超时时间
+     - 影响心跳间隔
     - watcher *
-        - 监听器 
-    - sessionId
-        - id
-    - sessionPasswd
-        - 密码   
-    - canBeReadOnly
-        - 是否只读
+      - 监听器
+    - sessionId
+    - sessionPasswd
+    -  canBeReadOnly
+      - 是否只读
 
-### 权限设置
+> *号为必须要的参数
+
+## ACL权限设置
 - `addauth digest username:password`
-   - 添加一个用户
-   - 密码需要特别处理
-   - Base64(SHA1(password))
+  - 添加一个用户
+- 使用 `setACL digest username:password`
+   - 需要对密码进行 Base64(SHA1(password))
    >   指令不需要 但是设置权限的时候需要
 
 ```java
-    /**
-     *  添加一个用户
-     * @param zooKeeper 客户端
-     * @param idPassword 用户名:密码
-     * @return zooKeeper客户端
-     * @throws NoSuchAlgorithmException
-     */
-    public  ZooKeeper generateDigest(ZooKeeper zooKeeper,String idPassword) throws NoSuchAlgorithmException {
-         String parts[] = idPassword.split(":", 2);
-         byte digest[] = MessageDigest.getInstance("SHA1").digest(idPassword.getBytes());
-        zooKeeper.addAuthInfo("digest",parts[0].concat(":").concat(base64Encode(digest)).getBytes());
-        return zooKeeper;
-    }
+  /**
+    *  添加一个用户
+    * @param zooKeeper 客户端
+   * @param idPassword 用户名:密码
+   * @return zooKeeper客户端
+   * @throws NoSuchAlgorithmException
+   */
+  public  ZooKeeper generateDigest(ZooKeeper zooKeeper,String idPassword) throws NoSuchAlgorithmException {
+       String parts[] = idPassword.split(":", 2);
+       byte digest[] = MessageDigest.getInstance("SHA1").digest(idPassword.getBytes());
+      zooKeeper.addAuthInfo("digest",parts[0].concat(":").concat(base64Encode(digest)).getBytes());
+      return zooKeeper;
+  }
 ```
 > "auth"方式,必须保证有一个用户被添加 否则抛出异常
 

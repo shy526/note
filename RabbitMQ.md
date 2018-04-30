@@ -37,7 +37,7 @@
 - `service rabbitmq-server start（stop,restart)`
     - 启动服务
 
-### 添加用户
+## 添加用户
 
 - 访问浏览器 Ip:15672
     - 登录名/密码
@@ -66,9 +66,9 @@
 ![](https://i.imgur.com/XGUJsDL.png)
 - 配置完成以此帐号登录即可
 
-## RabbitMQ各种模式介绍
+# RabbitMQ各种模式介绍
 
-### 简单模式（Simple）
+## 简单模式（Simple）
 ![](https://i.imgur.com/Q39CjGh.png)
 - P： producer 消息生产者
 - 红色：队列
@@ -159,7 +159,7 @@ public class SimpleDemo {
 }
 ```
 
-### 工作队列模式（Work Queue）
+## 工作队列模式（Work Queue）
 ![](https://i.imgur.com/SoWNqwg.png)
 - 避免立即执行资源密集型任务并等待它完成
 - 行许多消费者时，任务将在他们之间共享
@@ -211,7 +211,7 @@ public class WorkDemo {
 }
 ```
 
-### 发布/订阅模式 (Publish/Subscribe)
+## 发布/订阅模式 (Publish/Subscribe)
 ![](https://i.imgur.com/Gf1vCvU.png)
 
 
@@ -295,7 +295,7 @@ public class PublishSubscribeDemo {
 ```
 > 先启动消费者不让消息丢失
 
-### 路由模式(Routing)
+## 路由模式(Routing)
 ![](https://i.imgur.com/EJ4VDAE.png)
 
 ![](https://i.imgur.com/CNdyOAF.png)
@@ -372,7 +372,7 @@ ublic class RoutingDemo {
 }
 ```
 
-### 主题模型（topics)
+## 主题模型（topics)
 ![](https://i.imgur.com/lPjOh2O.png)
 
 - topic类型的交换机支持更灵活的路由键（支持通配符）
@@ -460,7 +460,7 @@ public class TopicDemo {
 ```
 > 只有1和3能监听到数据
 
-### 远程调用RPC
+## 远程调用RPC
 ![](https://i.imgur.com/ymWPqif.png)
 
 ## 相关链接

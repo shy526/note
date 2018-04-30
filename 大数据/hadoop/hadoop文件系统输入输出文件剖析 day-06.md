@@ -1,13 +1,14 @@
-### 读取
+# hadoop 输入输出文件系统
+## 读取
 
 ![](assets/markdown-img-paste-20180114125121908.png)
 > 网络拓扑需要额外的配置
 
-### 写入
+## 写入
 
 ![](assets/markdown-img-paste-20180114131635446.png)
 
-### 一致模型
+## 一致模型
 - 创建文件之后
   - 文件系统中立即可见
 - 写入文件内容
@@ -25,7 +26,7 @@
 
 > 注意调用频率
 
-### distcp并行 复制
+## distcp并行 复制
 - `Distcp`一种用法是替代 `hadoop fs -cp`
 -  `hadoop distcp f1 f2`
   - f1,f2 可以为目录也可以为文件

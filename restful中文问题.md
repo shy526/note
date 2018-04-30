@@ -113,21 +113,21 @@ public Object check(String callback,
         - sundada孙->sundada%25u5B59->sundada%u5B59->抛出异常
 
 
-## js中三种编码方式
+# js中三种编码方式
 
-### escape()
+## escape()
 - 函数可对字符串进行编码，这样就可以在所有的计算机上读取该字符串
 - 其中某些字符被替换成了十六进制的转义序列
     - %uxxx
 - 该方法不会对 ASCII 字母和数字进行编码，也不会对下面这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( )
 
-### encodeURI()
+## encodeURI()
 - 把字符串作为 URI 进行编码 utf-8
     - %x
 - 该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( )
 - 不会进行转义的：;/?:@&=+$,#
 
-###  encodeURIComponent()
+##  encodeURIComponent()
 - 字符串作为 URI 组件进行编码
 - 方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( )
 

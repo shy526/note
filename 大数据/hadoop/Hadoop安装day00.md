@@ -1,4 +1,4 @@
-## hadoop
+# hadoop
 1. 安装jdk
 
 2. 安装hadoop

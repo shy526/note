@@ -35,7 +35,7 @@
 
 
 
-### 简单的数据/全数据绑定
+# 简单的数据/全数据绑定
 |JSON类型|Java类型|
 |:-----:|:-----:|
 |object |	LinkedHashMap<String,Object>|
@@ -56,7 +56,7 @@
             - 具有多个重载方法
 
 
-###  树模型
+##  树模型
 - 树模型准备JSON文件的内存树表示
 
 - API
@@ -74,14 +74,14 @@
      -  `public <T> T treeToValue(TreeNode n, Class<T> valueType)`
          -  将树转换为Java对象
 
-### 流式API
+## 流式API
 - 流式API读取和写入JSON内容离散事件
 - JsonParser读取数据(写入JSON串)
 - JsonGenerator写入数据(解析JSON串)
 - 是最低开销和最快的读/写操作
 - 类似于XML的Stax解析器。
 
-#### JsonParser
+### JsonParser
 - `JsonFactory.createJsonParser()`
     - 创建JsonParser
 - `nextToken()`
@@ -100,7 +100,7 @@
 
     - 取value
 
-#### JsonGenerator
+### JsonGenerator
 - `JsonFactory.createJsonGenerator()`
     - 获取`JsonGenerator`
 

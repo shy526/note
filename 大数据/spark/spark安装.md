@@ -1,4 +1,4 @@
-## spark安装
+# spark安装
 - 安装配置java jdk(1.8)
 - 安装配置hadoop(2.9.0)
   - 配置伪分布式

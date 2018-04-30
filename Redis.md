@@ -273,7 +273,7 @@
         - 列表中不能调整莫个元素的位置,有序列表可以
         - 有序集合要比列表更耗费内存
 
-#### 有序集合类型指令
+### 有序集合类型指令
 - `zadd k s e [s e...]`
     - 向有序集合中插入 元素(e)及对应分数(s)
 
@@ -355,7 +355,7 @@ public class JedisTest {
 	}
 }
 ```
-### Shard数据分片
+## Shard数据分片
 - Jedis 利用池化思想,管理多个redis服务实例
     - 对k-v数据进行存储和管理
 - 只需要通过API进行key-value做CRUD即可
@@ -407,7 +407,7 @@ pool.returnResource(jedis);
 - Master/Salve会在Master挂掉后,发生转换
 - 当引入哨兵机制后，当主从关系发生变化时，sentienl.conf里的配置文件监听的Master ip 地址也会发生变化
 
-### 配置
+## 配置
 - 确保完成主从复制
 1. 编辑Sentinel.cnf
 2. `sentinel monitor mymaster MasterIP MasterPort 最少票数`

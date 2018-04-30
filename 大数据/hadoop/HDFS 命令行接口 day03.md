@@ -1,4 +1,4 @@
-## 命令
+# 命令行
 
 - `hadoop fs -copyFromLocal 本地路径 [hdfs://ip/]hdfs路径`
   - 本地文件上传hdfs
@@ -19,7 +19,7 @@
   - 创建目录
 
 
-### 命令详细
+## 命令详细
 - [csdn](https://www.cnblogs.com/MrFee/p/4683953.html)
 - [官网](http://hadoop.apache.org/docs/r2.9.0/hadoop-project-dist/hadoop-common/FileSystemShell.html
 )

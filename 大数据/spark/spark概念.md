@@ -1,6 +1,6 @@
-## spark
+# spark
 
-### 特点
+## 特点
 - 快速而通用的集群计算平台
 - 扩展了Mapreduce,支持更多交互模型
 - 基于内存,计算速度块
@@ -8,7 +8,7 @@
   - 运行在hadoop集群上
   - Cassandra在内的任意Hadoop数据源
 
-### Spark 组件
+## Spark 组件
 - Spark Core
   - 实现了Spark基本功能
     - 任务调度,内存管理,错误恢复,与存储系统交互等
@@ -41,7 +41,7 @@
     - 并行的图计算
 
 
-### spark-shell demo
+## spark-shell demo
 - 输出行数
   1. `spark-shell`
       - 进入Scala客户端

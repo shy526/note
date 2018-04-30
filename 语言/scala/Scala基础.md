@@ -1,6 +1,6 @@
-## Scala 基础
+# Scala 基础
 
-### 基础关键字
+## 基础关键字
 - `val`关键字
   - `val x=1;`
     - 声明一个常量
@@ -24,16 +24,16 @@
   - 类似 c++指针 指向 方法的地址
 
 - `def(参数列表)[(参数列表)...]:返回类型= [{执行语句}|执行语句(单行)]`
-  - `def add(a:Int,b:Int)(y:Int): Int =(a+b)*y;` 
+  - `def add(a:Int,b:Int)(y:Int): Int =(a+b)*y;`
     - 定一个方法
-  - 支持多个参数列表 
+  - 支持多个参数列表
   - 不用显式的`return`关键字
   - 支持`Unit`
     - 与`void`类似
 - `class`关键字
   - `class Point(x:Int,y:Int)`
   - 定义一个类和一个构造函数
-  
+
 - `case` 关键字
   - `case class Point(x:Int,y:Int)`
     - 定义一个不可变的类
@@ -42,7 +42,7 @@
 
 - `object`关键字
   - 自动添加`static`使其变为静态变量,或静态方法
-  - `def main(args: Array[String])` 
+  - `def main(args: Array[String])`
     - main 程序入口 采取一个参数为字符串数组
 
 - `trait`
@@ -51,7 +51,7 @@
   - `class` 通过 `extends`关键字继承`trait`特征
     - 继承方法未实现 需要使用`override` 关键字修饰 重写
 
-### 类型
+## 类型
 - `Any`
   - 顶级父类
   - 定义了某些通用的方法
@@ -72,7 +72,7 @@
   - 是所有类型的子类型
     - 没有价值
   - `Null`
-    - 所有引用类型的子类型 
+    - 所有引用类型的子类型
       - 主要为其他JVM语言预留
 - 所有数值类型都是对象
 
@@ -196,7 +196,7 @@ class E extends BB with CC with CCC ;
 
 ```
 
-- 实例Scala设计 一个迭代器实例 
+- 实例Scala设计 一个迭代器实例
 
 ```Scala
 //提供迭代器实现方法
@@ -228,4 +228,3 @@ trait  RichIterator extends AbsIterator{
 ```blog
 {type: "编程语言", tag:"编程语言,Scala",title:"Scala基础"}
 ```
-

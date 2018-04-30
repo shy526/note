@@ -1,6 +1,6 @@
-## MapReduceDemo
+# MapReduceDemo
 
-### 总结
+## 总结
  - CSDN 气象数据找出最高温度
 
 	1.  数据准备阶段
@@ -19,7 +19,7 @@
 	4. hadoop的运行方式不了解
   		-  被网络上的各种资料误导
 
-### 打包jar 解决办法
+## 打包jar问题
 - 引入maven插件
   - maven-shade-plugin
 
@@ -52,7 +52,7 @@
 </build>
 ```
 
-### Demo
+## Demo
 
 - Mapper
 
@@ -182,7 +182,7 @@ public class MaxTemperature {
       - 查看执行结果
 
 
-### 一些MapReduce概念
+## 一些MapReduce概念
 
 - 数据流
   - job(MapReduce)
@@ -206,7 +206,7 @@ public class MaxTemperature {
 > 尽量避免map和reduce任务之间的数据传输
 
 
- ### combiner函数
+ ## combiner函数
  - 属于优化方案
  - 针对map任务的输出指定一个combiner
  - combiner无法取代Reduce

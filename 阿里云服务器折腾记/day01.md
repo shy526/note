@@ -1,8 +1,6 @@
-# day01
-- 记录一些折腾阿里云的事
-
-### 环境搭建
-#### nginx 安装
+# 环境搭建
+- 阿里云服务器折腾
+## nginx 安装
 - 下载安装nginx依赖包
   - SSL功能需要openssl库
     - 下载地址：http://www.openssl.org/
@@ -44,7 +42,7 @@
     - `nginx -s reload`
 
 
-### mysql 安装
+## mysql 安装
 
 - 根据mysql官方文档安装即可
 
@@ -76,7 +74,7 @@
       4. `FLUSH PRIVILEGES `
         - 启用
 
-### git安装
+## git安装
 - https://github.com/git/git/archive/v2.16.1.tar.gz 下载解压
   - `wget https://github.com/git/git/archive/v2.16.1.tar.gz`
   - `tar -xvf xxx.gz`
@@ -101,7 +99,7 @@
   - `git clone https://github.com/sunjiaqing/blog.git`
     - 克github隆远程仓库
 
-- maven 安装
+## maven 安装
 -  https://archive.apache.org/dist/maven/maven-3/3.5.0/binaries/apache-maven-3.5.0-bin.tar.gz 下载解压
 
 - 修改profile

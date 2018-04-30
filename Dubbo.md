@@ -34,7 +34,7 @@
 - 根据需求通过网络对应用组件进行分布式部署、组合和使用
 - 松耦合
 
-### 特点
+## 特点
 
 1. 面向服务，以服务为中心
 2. 服务与服务之间是松耦合的
@@ -51,7 +51,7 @@
 - 京东:http://www.oschina.net/p/jd-hydra?fromerr=k30zqfPq
     - 闭源
 
-## Dubbox
+# Dubbox
 - 基于Dubbo
 - REST风格远程调用
 - Kryo/FST序列化等
@@ -64,10 +64,10 @@
     - 将dubbo中的zookeeper客户端升级到最新的版本
     - 以修正老版本中包含的bug
     -
-### 支持REST风格远程调用（HTTP + JSON/XML)
+## 支持REST风格远程调用（HTTP + JSON/XML)
 - dubbo支持多种远程调用方式，但缺乏对当今特别流行的REST风格远程调用的支持。
 
-### 支持基于Kryo和FST的Java高效序列化实现
+## 支持基于Kryo和FST的Java高效序列化实现
 - dubbo RPC是dubbo体系中最核心的一种高性能、高吞吐量的远程调用方式
     - 长连接
         - 避免了每次调用新建TCP连接，提高了调用的响应速度
@@ -96,15 +96,15 @@
     ```
 
 
-## 实例
+# 实例
 
-### protocol
+## protocol
 - 定义协议(接口)
 
 1. 创建Maven工程(quick start)
     - 添加接口
 
-### provider
+## provider
 - 定义生产者
 
 1. 创建Maven工程(webapp)
