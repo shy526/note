@@ -80,3 +80,8 @@
      - 测试即可
    - `chkconfig mongod on`
      - 开机自启
+
+
+```blog
+{type: "mongodb", tag:"mongodb nosql",title:"mongodb安装"}
+```

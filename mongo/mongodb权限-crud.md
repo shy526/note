@@ -196,3 +196,8 @@ db.createUser({
     - `db.collection.updateMany() `
   - 替换
     -  `db.collection.replaceOne()`
+
+
+```blog
+{type: "mongodb", tag:"mongodb nosql",title:"mongodb-权限与crud"}
+```
