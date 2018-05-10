@@ -1,7 +1,7 @@
 # events
 - Node.js 核心 API 都采用惯用的异步事件驱动架构
 
--`EventEmitter`
+- `EventEmitter`
   - 素有触发事件的对象
 - `eventEmitter.on()`
   - 用于注册监听器
