@@ -6,17 +6,17 @@
 - 对持久化的支持
 
 ## Redis 安装
-
 - Redis没有其它外部依赖安装简单
 
-1. 解压redis-x.xx.tar.gz
+1. wget http://download.redis.io/releases/redis-4.0.9.tar.gz
+    - 下载解压
 2. 进入redis解压目录,进行编译
     - 执行`make`
-3. 执行`maker install`
-    - 复制指令程序到`/usr/local/bin`
-    - 任意目录执行Redis指令
+3. 执行`make install`
 4. 启动服务
     - `redis-server`
+    - `redis-server 配置文件路径`
+        - 指定配置文件启动
 
 ![](https://i.imgur.com/2yhnFlA.png)
 
@@ -39,7 +39,6 @@
     - redis的配置文件
 
 - `daemonize`
-    - 42行
     - Redis服务是否以后台线程运行
     - 默认`no`
 
@@ -55,6 +54,27 @@
         - 数据库不能容忍跌势数据
     - Redis作为**cache**,则可以使用
     - xxmb
+## 开机自启动
+- `cp {redis_home}/utils/redis_init_script redis
+    - 复制一份
+- 修改`redis`文件
+    - CONF 指向配置文件路径
+    - 执行过`make install`,不用配置别的东西
+- 添加`chkconfig`到文件中,如下
+```shell
+# chkconfig: 2345 10 90  
+```
+
+- `mv redis /etc/rc.d/init.d/redis`
+    - 移动文件
+- `chkconfig --add redis`
+    - 添加 服务
+- `chkconfig redis on`
+    - 开机启动
+- 测试
+    - `service redis start`
+    - `service redis stop`
+
 
 ## 基础指令
 - `help 指令`
