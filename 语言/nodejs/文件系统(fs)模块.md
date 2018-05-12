@@ -485,3 +485,8 @@ console.log("go")
         - 默认:`w`
     - callback `<Function>`
         - err `<Error> `  
+
+        
+```blog
+{type: "编程语言", tag:"编程语言,node.js",title:"nodejs-fs(文件系统模块)"}
+```

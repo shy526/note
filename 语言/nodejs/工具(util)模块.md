@@ -87,3 +87,8 @@ console.log(util.inspect({
 - `WHATWG`编码标准文本解码API的实现
     - 这里不做扩展
 > HTML5的标准制定组织`WHATWG`(Web Hypertext Application Technology Working Group)
+
+
+```blog
+{type: "编程语言", tag:"编程语言,node.js",title:"nodejs-util(工具模块)"}
+```
