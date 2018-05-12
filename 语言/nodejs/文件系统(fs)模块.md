@@ -7,28 +7,32 @@
 
 
 ## fs.FSWatcher 
+
 ### fs.watch(filename[, options][, listener])
+
 - 监控文件或目录发生变化时触发`change`事件
-- filename <string> | <Buffer> | <URL>
+
+- filename `<string> | <Buffer> | <URL>`
     - 可以是一个文件或目录
-- options <string> | <Object>
-    - persistent <boolean> 
+- options `<string> | <Object>`
+
+    - persistent `<boolean>` 
         - 文件正在被监视,进程是否应该继续运行
         - 默认:`true`
-    - recursive <boolean> 
+    - recursive `<boolean>` 
         - 指明是否全部子目录应该被监视，或只是当前目录
         - 默认`false`
         > 只支持`macOS`,`Windows`
-    - encoding <string> 
+    - encoding `<string>`
         - 指定用于传给监听器的文件名的字符编码
         - 默认:`utf8`
-    - listener <Function> | <undefined> Default: undefined
-        - eventType <string>
+    - listener `<Function> | <undefined>` Default: undefined
+        - eventType `<string>`
             - 只会是`rename`或`change`
-        - filename <string> | <Buffer>
+        - filename `<string>` | `<Buffer>`
 
 ### `change`事件
-- 当一个被监视的目录或文件有变化时触发
+ 当一个被监视的目录或文件有变化时触发
 
 ```js
 const fs = require(`fs`);
@@ -74,8 +78,8 @@ console.log("开始监控")
 
 ## fs.access(path[, mode], callback)
 - 测试`path`指定的文件或目录的用户权限
-- path <string> | <Buffer> | <URL>
-- mode <integer>
+- path `<string> | <Buffer> | <URL>`
+- mode `<integer>`
     - 指定要执行的可访问性检查
     - 默认:`fs.constants.F_OK`
         - `fs.constants.F_OK` 
@@ -87,22 +91,22 @@ console.log("开始监控")
         - `fs.constants.X_OK`
             - 文件可被调用进程执行
             - 对`Windows`系统没作用(相当于 `fs.constants.F_OK`)
-- callback <Function>
-    - err <Error>
+- callback `<Function>`
+    - err `<Error>`
 > 不建议在调用`fs.open()`,`fs.readFile()`,`fs.writeFile()`之前使用`fs.access()`检查一个文件的可访问性
 
 ## fs.appendFile(file, data[, options], callback)
-- file <string> | <Buffer> | <URL> | <number> 文件名或文件描述符
-- data <string> | <Buffer>
-- options <Object> | <string>
-    - encoding <string> | <null>
+- file` <string> | <Buffer> | <URL> | <number>` 文件名或文件描述符
+- data `<string> | <Buffer>`
+- options `<Object> | <string>`
+    - encoding `<string> | <null>`
         - 默认:`utf8`
-    - mode <integer> 
+    - mode `<integer> `
         - 默认:`0o666`
-    - flag <string>
+    - flag `<string>`
         -  默认:`a`
 - callback <Function>
-    - err <Error>
+    - err `<Error>`
 
 ```js
 const fs = require(`fs`);
@@ -114,10 +118,10 @@ fs.appendFile("D:/my/nodejs/1.text","\n我的天",(err)=>{
 
 ## fs.chmod(path, mode, callback)
 - 异步地改变文件的权限
-- path <string> | <Buffer> | <URL>
-- mode <integer>
-- callback <Function>
-    - err <Error>
+- path` <string> | <Buffer> | <URL>`
+- mode `<integer>`
+- callback `<Function>`
+    - err `<Error>`
 
 
 |         常量         |   八进制   |           描述           |
@@ -152,9 +156,9 @@ fs.appendFile("D:/my/nodejs/1.text","\n我的天",(err)=>{
 
 ###  fs.close(fd, callback)
 - 关闭
-- fd <integer>
-- callback <Function>
-- err <Error>
+- fd `<integer>`
+- callback `<Function>`
+- err `<Error>`
 
 ## FS常量
 fs.constants
@@ -192,16 +196,16 @@ fs.constants
 
 
 
-|   常量   |                   描述                   |
-|:--------:|:----------------------------------------:|
-|  S_IFMT  |        用于提取文件类型码的位掩码        |
-| S_IFREG  |        常规文件的文件类型常量      |
-| S_IFDIR  |          目录的文件类型常量        |
-| S_IFCHR  |   面向字符的设备文件的文件类型常量 |
-| S_IFBLK  |    面向块的设备文件的文件类型常量  |
-| S_IFIFO  |       FIFO/pipe 的文件类型常量     |
-| S_IFLNK  |        符号链接的文件类型常量      |
-| S_IFSOCK |         socket 的文件类型常量      |
+|   常量   |               描述               |
+|:--------:|:--------------------------------:|
+|  S_IFMT  |    用于提取文件类型码的位掩码    |
+| S_IFREG  |      常规文件的文件类型常量      |
+| S_IFDIR  |        目录的文件类型常量        |
+| S_IFCHR  | 面向字符的设备文件的文件类型常量 |
+| S_IFBLK  |  面向块的设备文件的文件类型常量  |
+| S_IFIFO  |     FIFO/pipe 的文件类型常量     |
+| S_IFLNK  |      符号链接的文件类型常量      |
+| S_IFSOCK |      socket 的文件类型常量       |
 >  用于`fs.Stats`对象中用于决定一个文件的类型的`mode`属性
 
 
@@ -226,11 +230,11 @@ fs.constants
 ## fs.copyFile(src, dest[, flags], callback)
 - 将`src`拷贝到`dest`
     - `dest` 已经存在会被覆盖
-- src <string> | <Buffer> | <URL> 
+- src `<string> | <Buffer> | <URL> `
     - 要被拷贝的源文件名称
-- dest <string> | <Buffer> | <URL> 
+- dest `<string> | <Buffer> | <URL> `
     - 拷贝操作的目标文件名
-- flags <number> 
+- flags `<number>`
     - 拷贝操作修饰符 
     - 默认:`0`
     - `fs.constants.COPYFILE_EXCL`
@@ -248,37 +252,37 @@ console.log("go")
 
 ## fs.createReadStream(path[, options])
 - 创建读流
-- path <string> | <Buffer> | <URL>
-- options <string> | <Object>
-    - flags <string>
+- path `<string> | <Buffer> | <URL>`
+- options `<string> | <Object>`
+    - flags `<string>`
         - 默认:`r`
-    - encoding <string>
-    - fd <integer>
+    - encoding `<string>`
+    - fd `<integer>`
         - 传入时不会触发`open`事件
-    - mode <integer>
+    - mode `<integer>`
         - 默认:`0o666`
-    - autoClose <boolean>
+    - autoClose `<boolean>`
         - 默认:`true`
-    - start <integer>
+    - start `<integer>`
         - 默认:`0`
-    - end <integer>
-    - highWaterMark <integer>
+    - end `<integer>`
+    - highWaterMark `<integer>`
         - 默认: `64 * 1024`
 
 ## fs.createWriteStream(path[, options])
 - 创建写流
-- path <string> | <Buffer> | <URL>
-- options <string> | <Object>
-    - flags <string>
+- path `<string> | <Buffer> | <URL>`
+- options `<string> | <Object>`
+    - flags `<string>`
         - 默认:`w`
-    - encoding <string>
+    - encoding `<string>`
         - `utf8`
-    - fd <integer>
-    - mode <integer>
+    - fd `<integer>`
+    - mode `<integer>`
         - 默认:`0o666`
-    - autoClose <boolean>
+    - autoClose `<boolean>`
         - 默认:`true`
-    - start <integer>
+    - start `<integer>`
 ## fs.fchmod(fd, mode, callback)
 - 更改权限
 
@@ -314,111 +318,117 @@ console.log("go")
 - 创建临时唯一的临时的文件夹
 
 ## fs.open(path, flags[, mode], callback)
-- path <string> | <Buffer> | <URL>
-    - flags <string> | <number>
-    - mode <integer>
+- path `<string> | <Buffer> | <URL>`
+    - flags `<string> | <number>`
+    - mode `<integer>`
         - 默认:`0o666`
-    - callback <Function>
-        - err <Error>
-        - fd <integer>
+    - callback `<Function>`
+        - err `<Error>`
+        - fd `<integer>`
 
 - flg参数
-- `r` 
-    - 以读取模式打开文件
-    - 文件不存在则发生异常。
-- `r+` 
-    - 以读写模式打开文件
-    - 文件不存在则发生异常
-- `rs+` 
-    - 以同步读写模式打开文件
-    - 绕过本地文件系统缓存
-    > 影响性能
-- `w` 
-    - 以写入模式打开文件
-    - 文件不存在会被创建
-    - 文件存在被截断
-- `wx` 
-    - 类似 `w`
-    - `path`存在则失败
-- `w+` 
-    - 以读写模式打开文件
-    - 文件不存在会被创建
-    - 文件存在被截断
-- `wx+` 
-    - 类似 `w+`
-    - `path`存在则失败
-- `a` 
-    - 以追加模式打开文件
-    - 文件不存在被创建
-- `ax` 
-    - 类似于 `a`
-    - `path`存在则失败
-- `a+` 
-    - 以读取和追加模式打开文件
+    - `r` 
+        - 以读取模式打开文件
+        - 文件不存在则发生异常。
+    - `r+` 
+        - 以读写模式打开文件
+        - 文件不存在则发生异常
+    - `rs+` 
+        - 以同步读写模式打开文件
+        - 绕过本地文件系统缓存
+        > 影响性能
+    - `w` 
+        - 以写入模式打开文件
+        - 文件不存在会被创建
+        - 文件存在被截断
+    - `wx` 
+        - 类似 `w`
+        - `path`存在则失败
+    - `w+` 
+        - 以读写模式打开文件
+        - 文件不存在会被创建
+        - 文件存在被截断
+    - `wx+` 
+        - 类似 `w+`
+        - `path`存在则失败
+    - `a` 
+        - 以追加模式打开文件
         - 文件不存在被创建
-- `ax+` 
-    - 类似于 `a+`
-    - `path`存在则失败
+    - `ax` 
+        - 类似于 `a`
+        - `path`存在则失败
+    - `a+` 
+        - 以读取和追加模式打开文件
+            - 文件不存在被创建
+    - `ax+` 
+        - 类似于 `a+`
+        - `path`存在则失败
 
 
 ## fs.read(fd, buffer, offset, length, position, callback)
-- fd <integer>
+- fd `<integer>`
     - 指定的文件
-- buffer <Buffer> | <Uint8Array>
+- buffer `<Buffer> | <Uint8Array>`
     - 被写入的buffer
-- offset <integer>
+- offset `<integer>`
     - buffer写入时的偏移量
-- length <integer>
+- length `<integer>`
     - 要读取的字节数
-- position <integer>
+- position `<integer>`
     - 开始读取的位置
-- callback <Function>
-    - err <Error>
-    - bytesRead <integer>
-    - buffer <Buffer>  
+- callback `<Function>`
+    - err `<Error`>
+    - bytesRead `<integer>`
+    - buffer `<Buffer> ` 
 
 ## fs.readdir(path[, options], callback)
-- 读取目录的内容
-    - path <string> | <Buffer> | <URL>
-    - options <string> | <Object>
-    - encoding <string> 
+ - 读取目录的内容
+    - path `<string> | <Buffer> | <URL>`
+    - options `<string> | <Object>`
+    - encoding `<string> `
         - 默认:`utf8`
         - 可以是一个`buffer`
-    - callback <Function>
-        -   err <Error>
-        -   files <string[]> | <Buffer[]>
-            -  `files`是不包括`.`,`..`的文件名的数组  
+    - callback `<Function>`
+        -   err `<Error>`
+        -   files `<string[]> | <Buffer[]>`
+             -  `files`是不包括`.`,`..`的文件名的数组  
+
+
 ## fs.readFile(path[, options], callback)
-- 读取一个文件的内容
-- path <string> | <Buffer> | <URL> | <integer> 文件名或文件描述符。
-    -  options <Object> | <string>
-    -  encoding <string> | <null>
+ - 读取一个文件的内容
+- path `<string> | <Buffer> | <URL> | <integer>` 
+    -  options `<Object> | <string>`
+    -  encoding `<string> | <null>`
         - 默认:`null`
-    -  flag <string>
+    -  flag `<string>`
         - 默认:`r`
-    -  callback <Function>
-        -  err <Error>
-        -  data <string> | <Buffer>
-> 不会被自动关闭
+    -  callback `<Function>`
+        -  err `<Error>`
+        -  data `<string> | <Buffer>`
+     > 不会被自动关闭
+
+
+
 
 ## fs.readlink(path[, options], callback)
-- 获取连接的真实目录
-    - path <string> | <Buffer> | <URL>
-    - options <string> | <Object>
-    - encoding <string> 
+ - 获取连接的真实目录
+    - path `<string> | <Buffer> | <URL>`
+    - options `<string> | <Object>`
+    - encoding `<string>` 
         - 默认:`utf8`
     - callback <Function>
         - err <Error>
         - linkString <string> | <Buffer>
 
 ## fs.realpath(path[, options], callback)
-- 相对路径转换为绝对路径
-    - path <string> | <Buffer> | <URL>
-    - options <string> | <Object>
-    - encoding <string> 默认 = 'utf8'
-    - callback <Function>
-        - err <Error>
-        - resolvedPath <string> | <Buffer>
+ - 相对路径转换为绝对路径
+    - path `<string> | <Buffer> | <URL>`
+    - options `<string> | <Object>`
+    - encoding `<string>` 
+        - 默认:`utf8`
+    - callback `<Function>`
+        - err `<Error>`
+        - resolvedPath` <string> | <Buffer>`
 > 只支持可转换成`utf8`字符串的路径
 
 ## fs.rename(oldPath, newPath, callback)
@@ -448,30 +458,30 @@ console.log("go")
 
 ## fs.write(fd, buffer[, offset[, length[, position]]], callback)
 - `fs.write(fd, string[, position[, encoding]], callback)`
-    - fd <integer>
-    - buffer <Buffer> | <Uint8Array>
-    - offset <integer>
+    - fd `<integer>`
+    - buffer `<Buffer> | <Uint8Array>`
+    - offset `<integer>`
         - buffer中被写入的部分
-    - length <integer>
+    - length `<integer>`
         - 写入的字节数
-    - position <integer>
+    - position `<integer>`
         - 写入数据的位置的偏移量
-    - callback <Function>
-        - err <Error>
-        - bytesWritten <integer>
+    - callback `<Function>`
+        - err `<Error>`
+        - bytesWritten `<integer>`
             - 写入了多少字节
-        - buffer <Buffer> | <Uint8Array>
+        - buffer <Buffer> | `<Uint8Array>`
 > Linux上当文件以追加模式打开时,指定位置的写入是不起作用的
 ## fs.writeFile(file, data[, options], callback)
 - 写数据
-    - file <string> | <Buffer> | <URL> | <integer> 文件名或文件描述符
-    - data <string> | <Buffer> | <Uint8Array>
-    - options <Object> | <string>
-    - encoding <string> | <null>
+    - file `<string> | <Buffer> | <URL> | <integer>` 文件名或文件描述符
+    - data `<string> | <Buffer> | <Uint8Array>`
+    - options `<Object> | <string>`
+    - encoding `<string> | <null>`
         - 默认:`utf8`
-    - mode <integer>
+    - mode `<integer>`
         - 默认:`0o666`
-    - flag <string>
+    - flag `<string>`
         - 默认:`w`
-    - callback <Function>
-        - err <Error>   
+    - callback `<Function>`
+        - err `<Error> `  
