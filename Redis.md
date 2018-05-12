@@ -54,6 +54,10 @@
         - 数据库不能容忍跌势数据
     - Redis作为**cache**,则可以使用
     - xxmb
+- `requirepass`
+    - 为redis添加访问密码
+    - `auth 密码`
+        - 进入cli进行授权
 ## 开机自启动
 - `cp {redis_home}/utils/redis_init_script redis
     - 复制一份
