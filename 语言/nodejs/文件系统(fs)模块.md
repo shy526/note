@@ -312,7 +312,7 @@ console.log("go")
 - 创建连接
 
 ## fs.mkdir(path[, mode], callback)
-    - 创建文件夹
+- 创建文件夹
 
 ## fs.mkdtemp(prefix[, options], callback)
 - 创建临时唯一的临时的文件夹
