@@ -379,3 +379,7 @@
     - callback `<Function>`
         - 会作为单次监听器被添加到`response`事件
     - return: `<http.ClientRequest>`
+
+```blog
+{type: "编程语言", tag:"编程语言,node.js",title:"nodejs-http"}
+```
