@@ -111,7 +111,7 @@ rl.question("你是谁?\n",(answer)=>{
                 - 可禁用历史记录
         > `output`设为`true`时才有意义
     - prompt 
-        - 要使用的提示字符串
+        - 要使用的提示字符串   
           -  默认:`>`
     - crlfDelay `<number> `
         - 如果`\r``\n`之间的延迟超过`crlfDelay`毫秒则`\r`,`\n`都会被当作换行分隔符
