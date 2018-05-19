@@ -21,6 +21,6 @@ console.log(decoder.end(Buffer.from([0xAC])));
 - 返回解码后的字符串不包含`Buffer 末尾残缺的多字节字符
     - 残缺的多字节字符会被保存在一个内部的`buffer`中用于下次调用 `stringDecoder.write()`或`stringDecoder.end()`
 
-## ```blog
+```blog
 {type: "编程语言", tag:"编程语言,node.js",title:"nodejs-string_decoder(字符串解码模块)"}
 ```
