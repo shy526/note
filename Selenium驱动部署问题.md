@@ -7,7 +7,7 @@
 1. 检查权限
     - `file.canExecute()`
         - 检查执行权
-2 设置权限
+2. 设置权限
     - `file.setExecutable(true);`
 
 ```blog
