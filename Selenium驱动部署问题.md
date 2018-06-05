@@ -9,3 +9,7 @@
         - 检查执行权
 2 设置权限
     - `file.setExecutable(true);`
+
+```blog
+{type: "Selenium", tag:"Selenium",title:"Selenium driver is not executable问题"}
+```
