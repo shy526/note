@@ -58,12 +58,12 @@
     - 需要密码
   - `jps`
     - 校验集群是否正常启用
-    7815 NameNode
-    7913 DataNode
-    8106 SecondaryNameNode
-    8350 NodeManager
-    8254 ResourceManager
-    8943 Jps
+      - 7815 NameNode
+      - 7913 DataNode
+      - 8106 SecondaryNameNode
+      - 8350 NodeManager
+      - 8254 ResourceManager
+      - 8943 Jps
 
 ## web管理
 
