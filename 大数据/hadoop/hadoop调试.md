@@ -118,6 +118,36 @@ public class LoggingDriver extends Configured implements Tool {
 
 }
 ```
-> 日志默认:info级别
+> 日志默认:info级别 
+> 使用 `-D mapreduce.(map|reduce).log.level=DEBUG` 临时设置输出等级
 
-  ## 远程调试 
+### 其他日志相关参数
+- `yarn.nodemanager.log.retain-seconds`
+  - 日志保留时间
+  - 默认3小时
+  > 日志聚合开启后可忽略
+- `mapreduce.task.userlog.limit.kb`
+  - 日志文件最大阀值
+  - 默认:0 没有上线
+
+> `export HADOOP_ROOT_LOOGEr=DEBUG,console` 设置日志在控制台输出
+
+
+## 远程调试
+- 在集群上运行作业时,很难使用调试器,因不知道在那个节点运行
+- 本地重新产生错误
+    - 可以选择下载使任务失败的文件到本地重新运行
+- 使用JVM调优选项
+  - 内存溢出
+   - `mapred.child.java.opts`设置为`-XX:HeapDumpOnOutOfMemoryError-XX:HeapDumpPath=/path/to/dumps`
+     - 产生一个堆转储为`heapdump`
+- 使用任务分析
+  - hadoop提供了分析作业中部分任务的机制
+    - `mapreduce.task.files.preserve.failedtasks` 设置为 `true`
+      - 保存失败的任务文件
+    - `mapreduce.task.files.preserve.filepattern` 设置一个正则表达式
+      - 保存匹配任务ID的中间结果 
+    - `yarn.nodemanager.delete.debug-delay-sec`
+        - 表示等待删除本地尝试文件的时间(秒)
+        - 找到该任务失败节点找到尝试的目录
+          - 该目录由`mapreduce.cluster.local.dir` 属性决定
